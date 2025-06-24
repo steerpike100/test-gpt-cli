@@ -1,0 +1,15 @@
+# Node dependencies
+node_modules/
+
+# API keys and config
+.env
+
+# Build output
+dist/
+
+# VSCode and OS files
+.vscode/
+.DS_Store
+
+# Logs and misc
+*.log
