@@ -1,10 +1,37 @@
-export function generatePrompt(input: string, mode: 'code' | 'manual' | 'gherkin' = 'code'): string {
-  switch (mode) {
+export function generatePrompt(input: string, mode: string = 'code'): string {
+  switch (mode.toLowerCase()) {
     case 'manual':
-      return `Write a structured manual test case checklist for the following requirement:\n\n${input}`;
+      return `
+You're a senior QA engineer. Write a detailed manual test case checklist for the following requirement:
+
+${input}
+      `.trim();
+
     case 'gherkin':
-      return `Convert this requirement into Gherkin-style BDD scenarios:\n\n${input}`;
+      return `
+Convert the following requirement into one or more Gherkin-style BDD scenarios. Use the format:
+
+Feature: ...
+  Scenario: ...
+    Given ...
+    When ...
+    Then ...
+
+Input:
+${input}
+      `.trim();
+
+    case 'code':
     default:
-      return `Convert this requirement or BDD scenario into a runnable Playwright test in TypeScript:\n\n${input}`;
+      return `
+You are an expert in test automation.
+
+Convert the following requirement or BDD scenario into a runnable Playwright test in TypeScript.
+
+Use '@playwright/test' and include all relevant imports.
+
+Input:
+${input}
+      `.trim();
   }
 }
