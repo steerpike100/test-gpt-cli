@@ -2,14 +2,15 @@
   "name": "test-gpt-cli",
   "version": "1.0.0",
   "main": "index.js",
-    "type": "module",
-"bin": {
-  "test-gpt": "./dist/index.js"
-},
-"scripts": {
-  "build": "tsc",
-  "start": "ts-node bin/index.ts"
-},
+  "type": "module",
+  "bin": {
+    "test-gpt": "./dist/bin/index.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "start": "ts-node bin/index.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
   "dependencies": {
     "@types/node": "^24.0.3",
     "chalk": "^5.4.1",
+    "cli-highlight": "^2.1.11",
     "commander": "^14.0.0",
     "dotenv": "^16.5.0",
     "openai": "^5.7.0",

@@ -1,15 +1,13 @@
-# Node dependencies
+# Node modules and lock files
 node_modules/
-
-# API keys and config
-.env
+package-lock.json
 
 # Build output
 dist/
 
-# VSCode and OS files
-.vscode/
-.DS_Store
+# Local environment
+.env
 
-# Logs and misc
-*.log
+# Compiled test artifacts
+src/**/*.js
+src/**/*.js.map
