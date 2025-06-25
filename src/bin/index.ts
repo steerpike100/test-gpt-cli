@@ -17,6 +17,7 @@ type CliOptions = {
   text?: string;
   file?: string;
   output?: string;
+  mode?: string;
 };
 
 function prettyPrint(code: string) {
@@ -30,6 +31,7 @@ program
   .option('-t, --text <requirement>', 'Requirement or user story text')
   .option('-f, --file <filepath>', 'Path to a .txt or .feature file')
   .option('-o, --output <filename>', 'Write output to a file')
+  .option('--mode <mode>', 'generation mode: manual | code | gherkin', 'code')
   .action(async () => {
     try {
       const opts = program.opts<CliOptions>();
@@ -61,7 +63,7 @@ program
         process.exit(1);
       }
 
-      const prompt = generatePrompt(inputText);
+      const prompt = generatePrompt(inputText, opts.mode as any);
       const output = await getGeneratedTests(prompt);
 
       if (!output || output.trim() === '') {

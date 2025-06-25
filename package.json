@@ -9,7 +9,11 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
-    "start": "ts-node bin/index.ts"
+    "start": "ts-node bin/index.ts",
+
+  "generate:manual": "test-gpt --file tests/manual.txt --output generated/manual-test-cases.md",
+  "generate:playwright": "test-gpt --file tests/test.feature --output generated/test.spec.ts",
+  "generate:gherkin": "test-gpt --file tests/spec.txt --output generated/spec.feature"
   },
   "keywords": [],
   "author": "",
